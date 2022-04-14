@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    
+    
+    function App(){
+        const [counter, setCounter] = React.useState(0);
+        console.log(counter) // [undefined, ƒ] -> [0, ƒ]
+
+        const onClick = () => {
+            // setCounter(counter+1)
+            setCounter((current) => current + 1)    //더 안전한 방법. 현재 값으로 다음 값 계산. state 값을 해당 counter를 가져올 것이다.
+        }
+
+        return(
+            <div>
+                <h3>Total clicks : {counter} </h3>
+                <button onClick={onClick}>Click me!</button>
+            </div>
+        );
+    }
+    
+    ReactDOM.render(<App/>, root);
+
+    </script>
+</html>
