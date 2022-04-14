@@ -14,12 +14,19 @@
 <script>
     const root = document.getElementById("root");
     const h3 = React.createElement("h3", { 
+        id : "title",
         onMouseEnter : () => console.log("mouse enter"),
          }, 
-        "Hello I'm a span" 
+        "Hello I'm a title" 
     );
     const btn = React.createElement("button", { 
-            onClick : () => console.log("im clicked")
+            onClick : () => console.log("im clicked"),
+            style : {
+                padding: "4px 20px",
+                backgroundColor : "tomato",
+                border : "none",
+                color : "white"
+            }
         },
         "Click me"
     )
