@@ -1,0 +1,10 @@
+.wrap{margin:20px auto;}
+.title{font-size:30px;font-weight:800;text-align: center;letter-spacing: -.5px;}
+.tbl {margin:10px 0 0 0;width:100%;}
+.tbl th{border:1px solid #ccc}
+.tbl td{border:1px solid #ccc;padding:0 10px;}
+.tbl td:nth-child(1){text-align: center;}
+.tbl td:nth-child(2),
+.tbl td:nth-child(3){text-align: right;}
+.view{margin:30px;}
+.view select{margin-bottom:30px;width:300px}
