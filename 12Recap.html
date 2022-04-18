@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+    
+
+    function Btn({ text, fontSize = 11, changeValue }) {
+        console.log(text)
+        return <button 
+            onClick = {changeValue}
+            style={{
+            backgroundColor : "#333",
+            color : "white",
+            padding : "10px 20px",
+            border: "none",
+            borderRadius : "4px",
+            margin : "0 2px",
+            fontSize : fontSize
+        }}>{text}</button>
+    }
+    
+    const MemorizedBtn = React.memo(Btn)
+
+    /* props를 통해 어떤 props를 받아야하는지 체크할 수 있음.*/
+    Btn.propTypes = {
+        text : PropTypes.string.isRequired,
+        fontSize : PropTypes.number,
+    }
+
+
+    function App(){
+        const [value, setValue] = React.useState("Save Changes")
+        const changeValue = () => {
+            setValue("Revert Changes")
+        }
+
+        return(
+            <div>
+               <MemorizedBtn text={value} changeValue={changeValue} fontSize={20}/>
+               <MemorizedBtn text="Continue"/>
+            </div>
+        );
+    }
+    
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+
+    </script>
+</html>
