@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    
+    
+    function App(){
+        const [amount, setAmount] = React.useState(0);
+        const [filpped, setFilpped] = React.useState(false);
+
+        const onChange = (event) => {
+            setAmount(event.target.value);
+        }
+
+        const onReset = () => {
+            setAmount(0);
+        }
+
+        const onFilp = () => {
+            onReset();
+            setFilpped((current) => !current)
+        }
+
+        return(
+            <div>
+                <h1>Super Converter</h1>
+
+                <div>
+                    <label htmlFor="minutes">Minutes</label>
+                    <input 
+                    placeholder="Minutes" 
+                    id="minutes" 
+                    value={filpped ? amount * 60 : amount } 
+                    type="number"
+                    onChange={onChange}
+                    disabled={filpped === true}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="hours">Hours</label>
+                    <input 
+                    placeholder="Hours" 
+                    id="hours" 
+                    type="number"
+                    value={filpped ?  amount : Math.round(amount / 60)} 
+                    onChange={onChange}
+                    disabled={filpped === false}
+                    />
+                </div>
+
+                <button onClick={onReset}>Reset</button>
+                <button onClick={onFilp}>Filpped</button>
+
+                
+            </div>
+        );
+    }
+    
+    ReactDOM.render(<App/>, root);
+
+    </script>
+</html>
