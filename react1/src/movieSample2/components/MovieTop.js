@@ -71,4 +71,4 @@ const MovieTop = ({ movies }) => {
   );
 };
 
-export default MovieTop;
+export default React.memo(MovieTop);

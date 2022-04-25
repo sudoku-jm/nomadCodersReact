@@ -1,8 +1,11 @@
 # nomadCodersReact
 
-<<<<<<< HEAD
-2
-=======
 ## ReactJS로 영화 웹 서비스 만들기
 - 참고강의 : https://nomadcoders.co/react-for-beginners
->>>>>>> 20f4ba149d54595ad2ed5623762f6dd17346a07f
+
+- react1 : 함수형 리액트 프로젝트
+- react2019 : class형 리액트 프로젝트
+
+
+### react2019
+React JS 2019 class 형
