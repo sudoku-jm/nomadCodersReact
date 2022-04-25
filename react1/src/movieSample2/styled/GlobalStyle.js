@@ -8,10 +8,15 @@ const GlobalStyle = createGlobalStyle`
   /* 초기화 스타일 */
     *{
         box-sizing: border-box;
+        outline : 0;
     }
     body{
-        font-family: 'Roboto', sans-serif;
-        font-size:15px;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background-color: #eff3f7;
+        height: 100%;
     }
     a{
         color: #000;text-decoration:none;

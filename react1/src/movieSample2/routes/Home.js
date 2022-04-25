@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GlobalStyle from "../styled/GlobalStyle";
 import styled, { keyframes } from "styled-components";
+import style from "../styled/Home.module.css";
 import Movie from "../components/Movie";
 import MovieTop from "../components/MovieTop";
 
@@ -62,17 +63,22 @@ const Home = () => {
   // console.log(movies);
   return (
     <>
-      <GlobalStyle />
-      {loading ? (
-        <Loading></Loading>
-      ) : (
-        <div>
-          <MovieTop movies={movies} />
-          {movies.map((movie) => (
-            <Movie key={movie.id} movie={movie} />
-          ))}
-        </div>
-      )}
+      <GlobalStyle/>
+      <div className={style.container}>
+        {loading ? (
+          <Loading></Loading>
+        ) : (
+          <div>
+            <MovieTop movies={movies} />
+            <div className={style.movies}>
+            {movies.map((movie) => (
+              <Movie key={movie.id} movie={movie} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
     </>
   );
 };
