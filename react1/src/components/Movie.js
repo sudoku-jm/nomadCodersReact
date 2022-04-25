@@ -1,8 +1,11 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
 const Movie = ({ movie }) => {
-  const { medium_cover_image, title, summary, genres, id } = movie;
+  
+  const { medium_cover_image, title, summary, genres, id, rating } = movie;
+  
   return (
     <div>
       <div className="thum">
@@ -12,6 +15,7 @@ const Movie = ({ movie }) => {
         <Link to={`/movie/${id}`}>{title}</Link>
       </h2>
       <p>{summary.length > 235 ? `${summary.slice(0, 235)}…` : summary}</p>
+      <p>평점 : {rating }</p>
       <ul>
         {genres.map((genre) => (
           <li key={genre}> {genre}</li>
