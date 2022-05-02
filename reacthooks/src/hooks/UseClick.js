@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
 const useClick = (onClick) => {
-    
-    
     const element = useRef()
     
     useEffect(() => {
@@ -13,11 +11,10 @@ const useClick = (onClick) => {
             element.current.addEventListener("click", onClick)
         }
         
-
         //componentWillUnMount
+        //클린업!
         return () => {
             if(element.current){
-
                 element.current.removeEventListener("click", onClick)
             }
 
@@ -25,7 +22,7 @@ const useClick = (onClick) => {
     },[])
 
     return element
-}
+}//useClick
 
 const UseClick = () => {
     const sayHello = () => {
