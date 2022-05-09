@@ -1,8 +1,11 @@
 import React from 'react';
+import UseNotificationJsx from './hooks/UseNotification';
+// import UseFullscreenJsx from './hooks/UseFullscreen';
+// import UseScrollJsx from './hooks/UseScroll';
 // import Usefadein from './hooks/Usefadein';
 // import UsefadeinJsx from './hooks/UsefadeinJsx';
-import UseNetworkJsx from './hooks/UseNetworkJsx';
-import UseNetwork from './hooks/UseNetwork';
+// import UseNetworkJsx from './hooks/UseNetworkJsx';
+// import UseNetwork from './hooks/UseNetwork';
 // import UseBeforeLeaveJsx from './hooks/UseBeforeLeaveJsx';
 // import UseBeforeLeave from './hooks/UseBeforeLeave';
 // import UseConfirm from './hooks/UseConfirm';
@@ -40,8 +43,15 @@ const App = () => {
     {/* <UsefadeinJsx/> */}
       {/* <Usefadein/> */}
 
-      <UseNetworkJsx/>
+      {/* <UseNetworkJsx/> */}
       {/* <UseNetwork/> */}
+
+      {/* <UseScrollJsx/> */}
+
+      {/* <UseFullscreenJsx/> */}
+
+      <UseNotificationJsx/>
+
     </div>
   );
 };
