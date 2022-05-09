@@ -1,5 +1,9 @@
 import React from 'react';
-import UseBeforeLeaveJsx from './hooks/UseBeforeLeaveJsx';
+// import Usefadein from './hooks/Usefadein';
+// import UsefadeinJsx from './hooks/UsefadeinJsx';
+import UseNetworkJsx from './hooks/UseNetworkJsx';
+import UseNetwork from './hooks/UseNetwork';
+// import UseBeforeLeaveJsx from './hooks/UseBeforeLeaveJsx';
 // import UseBeforeLeave from './hooks/UseBeforeLeave';
 // import UseConfirm from './hooks/UseConfirm';
 // import UseConfirmJsx from './hooks/UseConfirmJsx';
@@ -30,8 +34,14 @@ const App = () => {
       {/* <UsePreventLeaveJsx/> */}
       {/* <UsePreventLeave/> */}
 
-      <UseBeforeLeaveJsx/>
+      {/* <UseBeforeLeaveJsx/> */}
       {/* <UseBeforeLeave/> */}
+
+    {/* <UsefadeinJsx/> */}
+      {/* <Usefadein/> */}
+
+      <UseNetworkJsx/>
+      {/* <UseNetwork/> */}
     </div>
   );
 };
