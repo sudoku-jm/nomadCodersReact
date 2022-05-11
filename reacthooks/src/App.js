@@ -1,5 +1,7 @@
 import React from 'react';
-import UseNotificationJsx from './hooks/UseNotification';
+import Debouncing from './ex/Debouncing';
+// import UseAxiosJsx from './hooks/UseAxios';
+// import UseNotificationJsx from './hooks/UseNotification';
 // import UseFullscreenJsx from './hooks/UseFullscreen';
 // import UseScrollJsx from './hooks/UseScroll';
 // import Usefadein from './hooks/Usefadein';
@@ -50,8 +52,11 @@ const App = () => {
 
       {/* <UseFullscreenJsx/> */}
 
-      <UseNotificationJsx/>
+      {/* <UseNotificationJsx/> */}
 
+      {/* <UseAxiosJsx/> */}
+
+      <Debouncing/>
     </div>
   );
 };
