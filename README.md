@@ -5,7 +5,7 @@
 - react1 : 함수형 리액트 프로젝트
 - react2019 : class형 리액트 프로젝트
 
-### ReactJS로 영화 웹 서비스 만들기
+### 실전형 리액트 Hooks 10개
 - 참고강의 : https://nomadcoders.co/react-hooks-introduction
 - reacthooks : 리액트 hook 10가지 정리 
 
