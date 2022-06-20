@@ -88,8 +88,8 @@ const Auth = () => {
       signInWithPopup(auth, providerGithub)
         .then((result) => {
           let credential = GithubAuthProvider.credentialFromResult(result);
-          let token = credential.accessToken;
-          let user = result.user;
+          // let token = credential.accessToken;
+          // let user = result.user;
         })
         .catch((error) => {
           const errorCode = error.code;
