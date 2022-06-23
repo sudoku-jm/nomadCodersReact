@@ -15,12 +15,15 @@ const App = () => {
   //   console.log("check!!", authService.currentUser); //유저정보 뜸
   // }, 2000);
 
+  const [userObj, setUserObj] = useState(null); //유저 정보를 담아줌
+
   useEffect(() => {
     //페이지 진입 시 onAuthStateChanged함수를 통해 유저가
     //실제 로그인이 되었는지 안 되었는지 알 수 있다.
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
+        setUserObj(user); //user정보 저장
       } else {
         setIsLoggedIn(false);
       }
@@ -32,7 +35,11 @@ const App = () => {
   return (
     <>
       {/* init이 false가 되면 router를 숨길 것이다. */}
-      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
+      {init ? (
+        <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
+      ) : (
+        "Initializing..."
+      )}
 
       <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
     </>

@@ -2,7 +2,6 @@ import React from "react";
 import {
   BrowserRouter,
   HashRouter as Router,
-  Redirect,
   Route,
   Routes,
 } from "react-router-dom";
@@ -11,7 +10,7 @@ import Home from "routes/Home";
 import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <BrowserRouter>
       {/* 사용자 로그인 시 네비게이션 노출 */}
@@ -22,7 +21,7 @@ const AppRouter = ({ isLoggedIn }) => {
 
         {isLoggedIn ? (
           <>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home userObj={userObj} />} />
             <Route path="/profile" element={<Profile />} />
           </>
         ) : (
