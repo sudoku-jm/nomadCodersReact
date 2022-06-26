@@ -1,5 +1,6 @@
+import React, { useEffect, useRef, useState } from "react";
 import Nweet from "components/Nweet";
-import { dbService } from "fBase";
+import { dbService, storageService } from "fBase";
 import {
   addDoc,
   collection,
@@ -8,12 +9,15 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { v4 as uuidv4, v4 } from "uuid";
+import { ref, uploadString } from "firebase/storage";
 
 /* 트윗을 할 페이지 */
 const Home = ({ userObj }) => {
   const [nweets, setNweets] = useState([]); //보낸 트윗들을 가져옴 getting the nweets
   const [nweet, setNweet] = useState(""); //트윗 텍스트가 담김 setting the nweet
+  const [attachment, setAttachment] = useState();
+  const fileInput = useRef();
 
   useEffect(() => {
     // 실시간으로 데이터를 데이터베이스에서 가져오기
@@ -42,18 +46,22 @@ const Home = ({ userObj }) => {
   //트윗 전송
   const onSubmit = async (event) => {
     event.preventDefault();
-    try {
-      //promise를 리턴하니 async awaite를 써준다.
+    //사진 먼저 업로드
+    //사진 URL을 받아 URL을 nweet에 추가
+
+    //파일에 대한 reference를 만들어주는 작업.
+    const fileRef = ref(storageService, `${userObj.uid}/${v4()}`);
+    const response = await uploadString(fileRef, attachment, "data_url");
+    console.log(response);
+
+    /* try {
       const docRef = await addDoc(collection(dbService, "nweets"), {
         text: nweet,
         createdAt: Date.now(),
         creatorId: userObj.uid,
       });
-      // console.log("Document written with ID: ", docRef.id);
-    } catch (error) {
-      // console.error("Error adding document: ", error);
-    }
-    setNweet("");
+    } catch (error) {}
+    setNweet(""); */
   };
 
   const onChange = (event) => {
@@ -61,6 +69,30 @@ const Home = ({ userObj }) => {
       target: { value },
     } = event;
     setNweet(value);
+  };
+
+  //파일데이터 선택
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+    const theFile = files[0]; //첫번째 파일을 가져온다.
+    // console.log(theFile);
+    const reader = new FileReader();
+    reader.onloadend = (finishedEvent) => {
+      //파일 로딩이 끝났을 때
+      // console.log(finishedEvent);
+      const {
+        currentTarget: { result },
+      } = finishedEvent; //finishedEvent.currentTarget.result
+      setAttachment(result);
+    };
+    reader.readAsDataURL(theFile);
+  };
+
+  const onClearAttachment = () => {
+    setAttachment(null);
+    fileInput.current.value = null;
   };
 
   return (
@@ -73,7 +105,19 @@ const Home = ({ userObj }) => {
           value={nweet}
           onChange={onChange}
         />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={onFileChange}
+          ref={fileInput}
+        />
         <input type="submit" value="Nweet" />
+        {attachment && (
+          <div>
+            <img src={attachment} width="50px" height="50px" />
+            <button onClick={onClearAttachment}>Clear</button>
+          </div>
+        )}
       </form>
 
       <div>
