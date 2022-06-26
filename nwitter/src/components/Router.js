@@ -10,6 +10,7 @@ import Home from "routes/Home";
 import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 
+/* isLoggedIn : 로그인 상태 true , false로 전달받음 */
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <BrowserRouter>
